@@ -1,13 +1,14 @@
-package com.example.todoapp
+package com.example.todoapp.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.example.todoapp.databinding.LayoutTaskBottomsheetBinding
+import com.example.todoapp.models.Task
+import com.example.todoapp.ui.viewmodels.TaskViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.gson.Gson
 
@@ -25,7 +26,6 @@ class TaskBottomSheet : BottomSheetDialogFragment() {
         if(isTaskUpdate) task = Gson().fromJson(arguments?.getString("taskObj"), Task::class.java)
         setData()
         setOnClickListener()
-        Log.d("arg",arguments.toString())
         return binding.root
     }
 
@@ -34,6 +34,7 @@ class TaskBottomSheet : BottomSheetDialogFragment() {
             binding.etTitle.setText(task.title)
             binding.etDueDate.setText(task.date)
             binding.etDueDate.isEnabled = false
+            binding.checkbox.isEnabled = false
         }
     }
 
@@ -48,7 +49,7 @@ class TaskBottomSheet : BottomSheetDialogFragment() {
                         Task(
                             date = binding.etDueDate.text.toString(),
                             title = binding.etTitle.text.toString(),
-                            isCompleted = false
+                            isCompleted = binding.checkbox.isChecked
                         )
                     )
                 }

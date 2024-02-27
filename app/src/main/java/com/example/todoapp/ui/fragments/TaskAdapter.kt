@@ -1,10 +1,12 @@
-package com.example.todoapp
+package com.example.todoapp.ui.fragments
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.todoapp.R
 import com.example.todoapp.databinding.ItemTaskBinding
+import com.example.todoapp.models.Task
 
 class TaskAdapter(
     var taskList: List<Task>,
