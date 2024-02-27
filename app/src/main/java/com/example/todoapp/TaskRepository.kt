@@ -7,8 +7,6 @@ class TaskRepository(
     private val taskDAO: TaskDAO
 ) {
     val readAllData: LiveData<List<Task>> = taskDAO.readAllTask()
-    val readAllDataOrderByDate: LiveData<List<Task>> = taskDAO.readAllTaskOrderByDueDate()
-    val readAllDataOrderByCompletionStatus: LiveData<List<Task>> = taskDAO.readAllTaskOrderByCompletionStatus()
 
     suspend fun addTask(task: Task) = taskDAO.addTask(task)
     suspend fun deleteCompletedTask() {

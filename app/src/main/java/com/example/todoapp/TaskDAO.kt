@@ -24,10 +24,4 @@ interface TaskDAO {
 
     @Query("DELETE FROM task_table WHERE id IN (:tasks)")
     fun deleteAllCompletedTaskIDs(tasks: List<Int>): Int
-
-    @Query("SELECT * FROM task_table ORDER BY date ASC")
-    fun readAllTaskOrderByDueDate(): LiveData<List<Task>>
-
-    @Query("SELECT * FROM task_table ORDER BY isCompleted ASC")
-    fun readAllTaskOrderByCompletionStatus(): LiveData<List<Task>>
 }

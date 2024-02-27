@@ -27,7 +27,7 @@ class HomeFragment : Fragment(), DismissBottomSheetListener {
         initTaskList()
         viewModel.readAllLiveData.observe(viewLifecycleOwner){
 //            Log.d("complete_fragment",it.toString())
-            if(it!=null) taskAdapter.taskList = it
+            taskAdapter.taskList = it
             taskAdapter.notifyDataSetChanged()
         }
         setOnClickListener()
@@ -48,13 +48,13 @@ class HomeFragment : Fragment(), DismissBottomSheetListener {
             viewModel.deleteCompletedData()
         }
 
-        binding.tvOrderByCompletionStatus.setOnClickListener {
-            viewModel.readAllDataOrderByCompletionDate()
-        }
-
-        binding.tvOrderByDate.setOnClickListener {
-            viewModel.readAllDataOrderByDate()
-        }
+//        binding.tvOrderByCompletionStatus.setOnClickListener {
+//            viewModel.readAllDataOrderByCompletionDate()
+//        }
+//
+//        binding.tvOrderByDate.setOnClickListener {
+//            viewModel.readAllDataOrderByDate()
+//        }
     }
 
     private fun initTaskList(){
